@@ -7,7 +7,7 @@ html, body {
 
 body {
     font-family: "Source Sans Pro", sans-serif;
-    min-width: 950px;
+    min-width: 992px;
     color: #555;
 }
 
@@ -45,6 +45,7 @@ nav {
     width: 100%;
     height: 80px;
     border-bottom: 1px solid #ededed;
+    border-top: 3px solid #2a74f5;
 }
 
 nav ul {
@@ -84,11 +85,11 @@ nav ul.left li:first-of-type {
 }
 
 nav ul.left li:first-of-type a {
-    color: #525252;
+    color: #2a74f5;
 }
 
 nav ul.left li:first-of-type a:hover, nav ul.left li:first-of-type a:active, nav ul.left li:first-of-type a:focus {
-    color: #3c3c3c;
+    color: #2068e6;
 }
 
 nav ul.right {
@@ -103,6 +104,7 @@ nav ul.right li:last-of-type {
  * Main Body Elements
  */
 .container {
+    min-width: 992px;
     margin: 50px;
 }
 

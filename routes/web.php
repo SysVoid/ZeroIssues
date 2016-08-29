@@ -11,7 +11,13 @@
 |
 */
 
-Route::get('/', function ()
-{
-    return view('index');
-});
+Route::get('/', [
+    'as' => 'index',
+    'uses' => 'MiscController@index'
+]);
+
+Route::get('/auth/login', [
+    'as' => 'auth.login',
+    'uses' => 'AuthController@login'
+]);
+Route::post('/auth/login', 'AuthController@doLogin');
