@@ -11,6 +11,15 @@ body {
     color: #555;
 }
 
+body.auth {
+    padding-top: 60px;
+}
+
+body.auth > h1:first-of-type {
+    text-align: center;
+    font-size: 30pt;
+}
+
 * {
     box-sizing: border-box;
 }

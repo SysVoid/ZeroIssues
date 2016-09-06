@@ -1,4 +1,4 @@
-@extends('layouts.master', ['disableSidebar' => true])
+@extends('layouts.auth')
 
 @section('content')
     <div class="row">

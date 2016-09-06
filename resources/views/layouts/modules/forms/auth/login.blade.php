@@ -4,7 +4,7 @@
         <form action="{{ route('auth.login') }}" method="post">
             <div class="group">
                 <label for="username">Username</label>
-                <input type="text" name="username" id="username" placeholder="Username">
+                <input type="text" name="username" id="username" placeholder="Username" autofocus>
                 @errors('username')
             </div>
 
