@@ -3,9 +3,9 @@
     <div class="body">
         <form action="{{ route('auth.login') }}" method="post">
             <div class="group">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" placeholder="Username" autofocus>
-                @errors('username')
+                <label for="email_address">Email Address</label>
+                <input type="email" name="email_address" id="email_address" placeholder="Email Address" autofocus>
+                @errors('email_address')
             </div>
 
             <div class="group">

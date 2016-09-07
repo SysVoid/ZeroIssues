@@ -21,3 +21,8 @@ Route::get('/auth/login', [
     'uses' => 'AuthController@login'
 ]);
 Route::post('/auth/login', 'AuthController@doLogin');
+
+Route::get('/auth/create-account', [
+    'as' => 'auth.create-account',
+    'uses' => 'AuthController@createAccount'
+]);

@@ -17,4 +17,9 @@ class AuthController extends Controller
     {
         return "passed";
     }
+
+    public function signup()
+    {
+        return view('auth.create-account');
+    }
 }
