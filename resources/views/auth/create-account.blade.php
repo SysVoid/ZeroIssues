@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
-            @include('layouts.modules.forms.auth.sign-up')
+            @include('layouts.modules.forms.auth.create-account')
         </div>
     </div>
 @stop

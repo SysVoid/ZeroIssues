@@ -4,8 +4,11 @@ namespace ZeroIssues;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use ZeroIssues\Email;
 use ZeroIssues\Login;
+use ZeroIssues\Mail\VerifyEmail;
 use ZeroIssues\RecoveryToken;
 
 class User extends Model
@@ -32,7 +35,7 @@ class User extends Model
 
     public static function register($firstName, $lastName, $password, $email)
     {
-        $emails = Email::where('email', $email)->where('activated', true)->count();
+        $emails = Email::where('email', $email)->where('verified', true)->count();
         if ($emails > 0)
         {
             return [
@@ -48,21 +51,32 @@ class User extends Model
             $user->last_name = $lastName;
             $user->password = bcrypt($password);
             $user->save();
-            $user->emails()->create([
+            $userEmail = $user->emails()->create([
                 'email' => $email,
-                'activation_token' => str_random(36),
-                'activated' => false,
+                'token' => str_random(128),
+                'verified' => false,
                 'primary' => true
             ]);
         } catch (\Exception $e)
         {
+            Log::error($e);
             return [
                 'type' => 'error',
                 'message' => 'Failed to create account. Please try again later.'
             ];
         }
 
-        // TODO: Send email
+        try
+        {
+            Mail::to($userEmail->email)->send(new VerifyEmail($user, $userEmail));
+        } catch (\Exception $e)
+        {
+            Log::error($e);
+            return [
+                'type' => 'error',
+                'message' => 'Failed to send verification email. Please try again later. You can resend the email by logging in.'
+            ];
+        }
 
         return [
             'type' => 'success',

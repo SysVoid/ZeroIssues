@@ -22,7 +22,18 @@ Route::get('/auth/login', [
 ]);
 Route::post('/auth/login', 'AuthController@doLogin');
 
-Route::get('/auth/create-account', [
+Route::get('/auth/create', [
     'as' => 'auth.create-account',
     'uses' => 'AuthController@createAccount'
+]);
+Route::post('/auth/create', 'AuthController@doCreateAccount');
+
+Route::get('/auth/email/verify/{user_id}/{email}/{token}', [
+    'as' => 'auth.emails.verify',
+    'uses' => 'AuthController@doVerifyEmail'
+]);
+
+Route::get('/auth/email/preferences', [
+    'as' => 'auth.emails.preferences',
+    'uses' => function() { return 'Not yet implemented'; }
 ]);

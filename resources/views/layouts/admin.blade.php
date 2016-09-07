@@ -9,6 +9,7 @@
         </nav>
 
         <div class="container">
+            @include('layouts.partials.alerts')
             @if (!isset($disableSidebar) || !$disableSidebar)
                 <div class="row">
                     <div class="col-xs-8">

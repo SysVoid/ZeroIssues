@@ -6,6 +6,12 @@
     <body class="auth">
         <h1>{{ config('app.name') }}</h1>
         <div class="container">
+            <div class="row">
+                <div class="col-xs-6 col-xs-offset-3">
+                    @include('layouts.partials.alerts')
+                </div>
+            </div>
+
             @yield('content')
         </div>
 

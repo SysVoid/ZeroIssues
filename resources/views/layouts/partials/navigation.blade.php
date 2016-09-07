@@ -4,6 +4,6 @@
 </ul>
 
 <ul class="right">
-    <li><a href="#">Create Account</a></li>
+    <li><a href="{{ route('auth.create-account') }}">Create Account</a></li>
     <li><a href="{{ route('auth.login') }}">Sign in</a></li>
 </ul>
