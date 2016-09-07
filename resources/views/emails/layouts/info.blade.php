@@ -6,7 +6,7 @@
     </div>
 
     <div style="margin-right: 50px;margin-left: 50px;">
-        @section('content')
+        @yield('content')
     </div>
 
     <div class="footer" style="margin-top: 30px;width: 100%;border-top: 1px solid #ededed;padding: 15px 0;text-align: center;">
