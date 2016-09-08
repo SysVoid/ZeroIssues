@@ -3,14 +3,14 @@
     <div class="body">
         <form action="{{ route('auth.login') }}" method="post">
             <div class="group">
-                <label for="email_address">Email Address</label>
-                <input type="email" name="email_address" id="email_address" placeholder="Email Address" autofocus>
+                <label for="email_address">@lang("lang.auth_login.get.emailaddress_label")</label>
+                <input type="email" name="email_address" id="email_address" placeholder="@lang('lang.auth_login.get.emailaddress_placeholder')" autofocus>
                 @errors('email_address')
             </div>
 
             <div class="group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="Password">
+                <label for="password">@lang("lang.auth_login.get.password_label")</label>
+                <input type="password" name="password" id="password" placeholder="@lang('lang.auth_login.get.password_label')">
                 @errors('password')
             </div>
 

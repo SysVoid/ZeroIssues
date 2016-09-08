@@ -1,9 +1,9 @@
 <div class="module">
-    <div class="heading">Your Account</div>
+    <div class="heading">@lang("lang.sidebar.youraccount")</div>
 
     <div class="body">
-        <p>You don't appear to be logged in right now.</p><br>
-        <p><a href="{{ route('auth.login') }}">Sign in</a></p>
-        <p><a href="#">Create an Account</a></p>
+        <p>@lang("lang.sidebar.notloggedin")</p><br>
+        <p><a href="{{ route('auth.login') }}">@lang("lang.sidebar.signin")</a></p>
+        <p><a href="#">@lang("lang.sidebar.createanaccount")</a></p>
     </div>
 </div>
