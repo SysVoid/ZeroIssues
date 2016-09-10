@@ -12,7 +12,7 @@
             @include('layouts.partials.alerts')
             @if (!isset($disableSearch) || !$disableSearch)
                 <form action="" method="get">
-                    <input type="text" name="q" placeholder="@lang('lang.navigation.search')" autofocus>
+                    <input type="text" name="q" placeholder="@lang('navigation.search')" autofocus>
                 </form>
             @endif
 
