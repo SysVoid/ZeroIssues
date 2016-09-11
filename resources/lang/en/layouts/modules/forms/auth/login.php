@@ -1,6 +1,7 @@
 <?php
     return [
         'get' => [
+            'heading' => 'Authenticate',
             'emailaddress_label' => 'Email Address',
             'emailaddress_placeholder' => 'Email Address',
             'password_label' => 'Password',
