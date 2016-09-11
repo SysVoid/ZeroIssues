@@ -13,7 +13,6 @@ function Application() {
 
 var application = new Application();
 application.formSubmit(document.getElementsByTagName('form'), function (e) {
-    e.preventDefault(true);
     Array.from(e.target.getElementsByTagName('button')).forEach(function (btn) {
         if (btn.type === 'submit') {
             btn.innerHTML = 'Processing...';

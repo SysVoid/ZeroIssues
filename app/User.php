@@ -4,6 +4,7 @@ namespace ZeroIssues;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use ZeroIssues\Email;
@@ -16,7 +17,18 @@ class User extends Model
     use SoftDeletes;
 
     protected $fillable = ['first_name', 'last_name', 'password'];
+    protected $appends = ['primary_email'];
     protected $guarded = ['password'];
+
+    public function getPrimaryEmailAttribute()
+    {
+        return $this->emails()->where('primary', true)->first()->email;
+    }
+
+    public function setPrimaryEmailAttribute($value)
+    {
+        $this->attributes['primary_email'] = $value;
+    }
 
     public function logins()
     {
@@ -31,6 +43,20 @@ class User extends Model
     public function emails()
     {
         return $this->hasMany(Email::class);
+    }
+
+    public static function login($email, $password, $ip, $userAgent)
+    {
+        // the user object gets the primary_email property when it's constructed
+        // will look into why this bit fails.
+        if (Auth::attempt(['primary_email' => $email, 'password' => $password]))
+        {
+            Auth::user()->logins()->create([
+                'ip_address' => $ip,
+                'user_agent' => $userAgent
+            ]);
+        }
+        return (Auth::check() ? Auth::user() : null);
     }
 
     public static function register($firstName, $lastName, $password, $email)

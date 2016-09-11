@@ -17,7 +17,12 @@ class AuthController extends Controller
 
     public function doLogin(LoginRequest $request)
     {
-        return "passed";
+        $user = User::login($request->input('email_address'), $request->input('password'), $request->ip(), $request->header('User-Agent'));
+        if ($user !== null)
+        {
+            return redirect()->route('index')->with('info', 'Welcome back, ' . $user->first_name . '!');
+        }
+        return redirect()->route('auth.login')->with('error', 'Failed to authenticate.')->withInput();
     }
 
     public function createAccount()
