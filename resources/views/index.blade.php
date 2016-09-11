@@ -11,7 +11,7 @@
                     <p><a href="#">How to add/remove users to/from support departments</a></p>
 
                     <div class="button margin-top-50">
-                        <a href="#" class="button">@lang("lang.index.get.viewmore_button")</a>
+                        <a href="#" class="button">@lang("index.get.viewmore_button")</a>
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                     <p><a href="#">How to create new tickets</a></p>
 
                     <div class="button margin-top-50">
-                        <a href="#" class="button">@lang("lang.index.get.viewmore_button")</a>
+                        <a href="#" class="button">@lang("index.get.viewmore_button")</a>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                     <p><a href="#">How to add/remove users to/from support departments</a></p>
 
                     <div class="button margin-top-50">
-                        <a href="#" class="button">@lang("lang.index.get.viewmore_button")</a>
+                        <a href="#" class="button">@lang("index.get.viewmore_button")</a>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                     <p><a href="#">How to add/remove users to/from support departments</a></p>
 
                     <div class="button margin-top-50">
-                        <a href="#" class="button">@lang("lang.index.get.viewmore_button")</a>
+                        <a href="#" class="button">@lang("index.get.viewmore_button")</a>
                     </div>
                 </div>
             </div>
