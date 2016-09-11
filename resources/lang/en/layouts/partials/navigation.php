@@ -4,4 +4,4 @@
         'signin' => 'Sign In',
         'home' => 'Home',
         'search' => 'Search our knowledgebase...'
-    ]
+    ];

@@ -1,6 +1,7 @@
 <?php
     return [
         'get' => [
+            'heading' => 'Authenticate',
             'emailaddress_label' => 'Email Address',
             'emailaddress_placeholder' => 'Email Address',
             'password_label' => 'Password',
@@ -12,5 +13,5 @@
             'lastname_label' => 'Last Name',
             'lastname_placeholder' => 'Last Name',
             'createaccount_button' => 'Create Account'
-        ],  
+        ],
     ];

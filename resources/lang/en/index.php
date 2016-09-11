@@ -3,4 +3,4 @@
         'get' => [
           'viewmore_button' => 'View more...'
         ],
-    ]
+    ];
