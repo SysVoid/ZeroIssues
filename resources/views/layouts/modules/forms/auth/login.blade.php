@@ -1,5 +1,5 @@
 <div class="module">
-    <div class="heading">Authenticate</div>
+    <div class="heading">@lang('layouts/modules/forms/auth/login.get.heading')</div>
     <div class="body">
         <form action="{{ route('auth.login') }}" method="post">
             <div class="group">

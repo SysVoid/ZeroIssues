@@ -36,6 +36,6 @@ class VerifyEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Verify Your Email | ' . config('app.name'))->view('emails.auth.verify-email');
+        return $this->subject(trans('emails.auth.verify-email.subject', ['app-name'=>config('app.name')]))->view('emails.auth.verify-email');
     }
 }
