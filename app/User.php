@@ -2,8 +2,10 @@
 
 namespace ZeroIssues;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -12,9 +14,9 @@ use ZeroIssues\Login;
 use ZeroIssues\Mail\VerifyEmail;
 use ZeroIssues\RecoveryToken;
 
-class User extends Model
+class User extends Authenticatable
 {
-    use SoftDeletes;
+    use Notifiable, SoftDeletes;
 
     protected $fillable = ['first_name', 'last_name', 'password'];
     protected $appends = ['primary_email'];
@@ -47,15 +49,20 @@ class User extends Model
 
     public static function login($email, $password, $ip, $userAgent)
     {
-        // the user object gets the primary_email property when it's constructed
-        // will look into why this bit fails.
-        if (Auth::attempt(['primary_email' => $email, 'password' => $password]))
+        $emailRecord = Email::where('email', $email)->where('verified', true)->where('primary', true)->first();
+        if ($emailRecord === null)
+        {
+            return null;
+        }
+
+        if (Auth::attempt(['id' => $emailRecord->user_id, 'password' => $password]))
         {
             Auth::user()->logins()->create([
                 'ip_address' => $ip,
                 'user_agent' => $userAgent
             ]);
         }
+
         return (Auth::check() ? Auth::user() : null);
     }
 
