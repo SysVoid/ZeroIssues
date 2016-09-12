@@ -15,6 +15,7 @@
             </div>
 
             <div class="button">
+                <a href="{{ route('auth.create-account') }}" class="button">Create Account</a>
                 <button type="submit">@lang("layouts/modules/forms/auth/login.get.signin_button")</button>
             </div>
             {!! csrf_field() !!}

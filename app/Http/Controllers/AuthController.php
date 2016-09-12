@@ -17,11 +17,18 @@ class AuthController extends Controller
 
     public function doLogin(LoginRequest $request)
     {
-        $user = User::login($request->input('email_address'), $request->input('password'), $request->ip(), $request->header('User-Agent'));
+        $user = User::login(
+            $request->input('email_address'),
+            $request->input('password'),
+            $request->ip(),
+            $request->header('User-Agent')
+        );
+
         if ($user !== null)
         {
             return redirect()->route('index')->with('info', 'Welcome back, ' . $user->first_name . '!');
         }
+
         return redirect()->route('auth.login')->with('error', 'Failed to authenticate.')->withInput();
     }
 
@@ -40,5 +47,11 @@ class AuthController extends Controller
         );
 
         return redirect()->route('auth.create-account')->withInput()->with($response['type'], $response['message']);
+    }
+
+    public function logout()
+    {
+        $response = User::logout();
+        return redirect()->route('auth.login')->with($response['type'], $response['message']);
     }
 }

@@ -115,6 +115,10 @@ nav ul.right li:last-of-type {
     margin-right: 50px;
 }
 
+nav li.user {
+    font-weight: 600;
+}
+
 /*
  * Main Body Elements
  */

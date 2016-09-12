@@ -18,9 +18,19 @@ class User extends Authenticatable
 {
     use Notifiable, SoftDeletes;
 
-    protected $fillable = ['first_name', 'last_name', 'password'];
-    protected $appends = ['primary_email'];
-    protected $guarded = ['password'];
+    protected $fillable = ['first_name', 'last_name', 'password', 'remember_token'];
+    protected $appends = ['full_name', 'primary_email'];
+    protected $guarded = ['password', 'remember_token'];
+
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . " " . $this->last_name;
+    }
+
+    public function setFullNameAttribute($value)
+    {
+        $this->attributes['full_name'] = $value;
+    }
 
     public function getPrimaryEmailAttribute()
     {
@@ -114,6 +124,23 @@ class User extends Authenticatable
         return [
             'type' => 'success',
             'message' => 'An email has been dispatched to activate the account.'
+        ];
+    }
+
+    public static function logout()
+    {
+        if (Auth::check())
+        {
+            Auth::logout();
+            return [
+                'type' => 'error',
+                'message' => 'You have been logged out.'
+            ];
+        }
+
+        return [
+            'type' => 'error',
+            'message' => 'You must be logged in to do that.'
         ];
     }
 }

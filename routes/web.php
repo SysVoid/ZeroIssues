@@ -22,6 +22,11 @@ Route::get('/auth/login', [
 ]);
 Route::post('/auth/login', 'AuthController@doLogin');
 
+Route::get('/auth/logout', [
+    'as' => 'auth.logout',
+    'uses' => 'AuthController@logout'
+]);
+
 Route::get('/auth/create', [
     'as' => 'auth.create-account',
     'uses' => 'AuthController@createAccount'

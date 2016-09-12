@@ -1,7 +1,7 @@
 <?php
     return [
         'createaccount' => 'Create Account',
-        'signin' => 'Sign In',
+        'login' => 'Log In',
         'home' => 'Home',
         'search' => 'Search our knowledgebase...'
     ];

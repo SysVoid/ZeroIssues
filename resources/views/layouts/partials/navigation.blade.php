@@ -4,6 +4,11 @@
 </ul>
 
 <ul class="right">
-    <li><a href="{{ route('auth.create-account') }}">@lang("layouts/partials/navigation.createaccount")</a></li>
-    <li><a href="{{ route('auth.login') }}">@lang("layouts/partials/navigation.signin")</a></li>
+    @if (Auth::check())
+        <li class="user"><a href="#">{{ Auth::user()->full_name }}</a></li>
+        <li><a href="{{ route('auth.logout') }}">Log Out</a></li>
+    @else
+        <li><a href="{{ route('auth.create-account') }}">@lang("layouts/partials/navigation.createaccount")</a></li>
+        <li><a href="{{ route('auth.login') }}">@lang("layouts/partials/navigation.login")</a></li>
+    @endif
 </ul>
