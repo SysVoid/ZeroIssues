@@ -27,7 +27,7 @@ class AuthController extends Controller
 
         if ($user !== null)
         {
-            return redirect()->route('index')->with('info', 'Welcome back, ' . $user->first_name . '!');
+            return redirect()->intended('/')->with('info', 'Welcome back, ' . $user->first_name . '!');
         }
 
         return redirect()->route('auth.login')->with('error', 'Failed to authenticate.')->withInput();
