@@ -19,21 +19,21 @@ Route::get('/', [
 Route::get('/auth/login', [
     'as' => 'auth.login',
     'uses' => 'AuthController@login'
-]);
-Route::post('/auth/login', 'AuthController@doLogin');
+])->middleware('guest');
+Route::post('/auth/login', 'AuthController@doLogin')->middleware('guest');
 
 Route::get('/auth/logout', [
     'as' => 'auth.logout',
     'uses' => 'AuthController@logout'
-]);
+])->middleware('auth');
 
 Route::get('/auth/create', [
     'as' => 'auth.create-account',
     'uses' => 'AuthController@createAccount'
-]);
-Route::post('/auth/create', 'AuthController@doCreateAccount');
+])->middleware('guest');
+Route::post('/auth/create', 'AuthController@doCreateAccount')->middleware('guest');
 
-Route::get('/auth/email/verify/{user_id}/{email}/{token}', [
+Route::get('/auth/email/verify/{userId}/{email}/{token}', [
     'as' => 'auth.emails.verify',
     'uses' => 'AuthController@doVerifyEmail'
 ]);

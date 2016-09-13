@@ -3,6 +3,7 @@
 namespace ZeroIssues\Http\Controllers;
 
 use Illuminate\Http\Request;
+use ZeroIssues\Email;
 use ZeroIssues\Http\Requests;
 use ZeroIssues\Http\Requests\CreateAccountRequest;
 use ZeroIssues\Http\Requests\LoginRequest;
@@ -53,5 +54,11 @@ class AuthController extends Controller
     {
         $response = User::logout();
         return redirect()->route('auth.login')->with($response['type'], $response['message']);
+    }
+
+    public function doVerifyEmail($userId, $email, $token)
+    {
+        $response = Email::verify($userId, $email, $token);
+        return redirect()->route('index')->with($response['type'], $response['message']);
     }
 }
