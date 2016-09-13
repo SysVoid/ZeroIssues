@@ -3,6 +3,7 @@
 namespace ZeroIssues\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use ZeroIssues\Email;
 use ZeroIssues\Http\Requests;
 use ZeroIssues\Http\Requests\CreateAccountRequest;
@@ -27,7 +28,12 @@ class AuthController extends Controller
 
         if ($user !== null)
         {
-            return redirect()->intended('/')->with('info', 'Welcome back, ' . $user->first_name . '!');
+            // Don't redirect the user to the logout page when they login
+            if ($request->input('previous') === route('auth.logout'))
+            {
+                return redirect()->route('index')->with('info', 'Welcome back, ' . $user->first_name . '!');
+            }
+            return redirect()->intended(route('index'))->with('info', 'Welcome back, ' . $user->first_name . '!');
         }
 
         return redirect()->route('auth.login')->with('error', 'Failed to authenticate.')->withInput();

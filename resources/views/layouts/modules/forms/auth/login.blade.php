@@ -18,6 +18,8 @@
                 <a href="{{ route('auth.create-account') }}" class="button">Create Account</a>
                 <button type="submit">@lang("layouts/modules/forms/auth/login.get.signin_button")</button>
             </div>
+
+            <input type="hidden" name="previous" value="{{ URL::previous() }}">
             {!! csrf_field() !!}
         </form>
     </div>
