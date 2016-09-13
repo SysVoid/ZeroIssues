@@ -83,7 +83,7 @@ class User extends Authenticatable
         {
             return [
                 'type' => 'error',
-                'message' => 'That email address is already in use.'
+                'message' => trans('models.user.email_inuse'),
             ];
         }
 
@@ -105,7 +105,7 @@ class User extends Authenticatable
             Log::error($e);
             return [
                 'type' => 'error',
-                'message' => 'Failed to create account. Please try again later.'
+                'message' => trans('models.user.create_failed')
             ];
         }
 
@@ -117,13 +117,13 @@ class User extends Authenticatable
             Log::error($e);
             return [
                 'type' => 'error',
-                'message' => 'Failed to send verification email. Please try again later. You can resend the email by logging in.'
+                'message' => trans('models.user.verification_email_failed')
             ];
         }
 
         return [
             'type' => 'success',
-            'message' => 'An email has been dispatched to activate the account.'
+            'message' => trans('models.user.verification_email_sent')
         ];
     }
 
@@ -134,13 +134,13 @@ class User extends Authenticatable
             Auth::logout();
             return [
                 'type' => 'error',
-                'message' => 'You have been logged out.'
+                'message' => trans('models.user.logged_out')
             ];
         }
 
         return [
             'type' => 'error',
-            'message' => 'You must be logged in to do that.'
+            'message' => trans('models.user.not_loggedin')
         ];
     }
 }
