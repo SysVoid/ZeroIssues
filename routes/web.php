@@ -16,6 +16,9 @@ Route::get('/', [
     'uses' => 'MiscController@index'
 ]);
 
+// #
+// | Authentication
+// #
 Route::get('/auth/login', [
     'as' => 'auth.login',
     'uses' => 'AuthController@login'
@@ -43,6 +46,17 @@ Route::get('/auth/email/preferences', [
     'uses' => function() { return 'Not yet implemented'; }
 ]);
 
+// #
+// | Ticketing System
+// #
+Route::get('/tickets', [
+    'as' => 'tickets.list',
+    'uses' => 'TicketController@listUserTickets'
+]);
+
+// #
+// | JavaScript/Misc
+// #
 Route::get('/jsdict', [
     'as' => 'jsdict',
     'uses' => 'MiscController@jsDict'
