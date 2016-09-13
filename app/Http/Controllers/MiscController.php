@@ -11,4 +11,9 @@ class MiscController extends Controller
     {
         return view('index');
     }
+
+    public function jsDict()
+    {
+        return trans('javascript');
+    }
 }

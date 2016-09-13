@@ -42,3 +42,8 @@ Route::get('/auth/email/preferences', [
     'as' => 'auth.emails.preferences',
     'uses' => function() { return 'Not yet implemented'; }
 ]);
+
+Route::get('/jsdict', [
+    'as' => 'jsdict',
+    'uses' => 'MiscController@jsDict'
+]);
