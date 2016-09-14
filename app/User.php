@@ -83,7 +83,7 @@ class User extends Authenticatable
         {
             return [
                 'type' => 'error',
-                'message' => trans('models.user.email_inuse'),
+                'message' => trans('models/user.email_inuse'),
             ];
         }
 
@@ -105,7 +105,7 @@ class User extends Authenticatable
             Log::error($e);
             return [
                 'type' => 'error',
-                'message' => trans('models.user.create_failed')
+                'message' => trans('models/user.create_failed')
             ];
         }
 
@@ -117,13 +117,13 @@ class User extends Authenticatable
             Log::error($e);
             return [
                 'type' => 'error',
-                'message' => trans('models.user.verification_email_failed')
+                'message' => trans('models/user.verification_email_failed')
             ];
         }
 
         return [
             'type' => 'success',
-            'message' => trans('models.user.verification_email_sent')
+            'message' => trans('models/user.verification_email_sent')
         ];
     }
 
@@ -134,13 +134,13 @@ class User extends Authenticatable
             Auth::logout();
             return [
                 'type' => 'error',
-                'message' => trans('models.user.logged_out')
+                'message' => trans('models/user.logged_out')
             ];
         }
 
         return [
             'type' => 'error',
-            'message' => trans('models.user.not_loggedin')
+            'message' => trans('models/user.not_loggedin')
         ];
     }
 }
